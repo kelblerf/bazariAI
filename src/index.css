@@ -1,0 +1,69 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 36 33% 98%;
+    --foreground: 212 32% 16%;
+    --card: 0 0% 100%;
+    --card-foreground: 212 32% 16%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 212 32% 16%;
+    --primary: 18 79% 52%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 36 38% 94%;
+    --secondary-foreground: 212 32% 16%;
+    --muted: 32 29% 93%;
+    --muted-foreground: 214 16% 45%;
+    --accent: 194 52% 46%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 76% 56%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 28 26% 86%;
+    --input: 28 26% 86%;
+    --ring: 18 79% 52%;
+    --success: 148 63% 34%;
+    --warning: 35 91% 48%;
+    --radius: 1rem;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: "Manrope", "Segoe UI", sans-serif;
+    background-image:
+      radial-gradient(circle at top left, rgba(255, 145, 77, 0.14), transparent 32%),
+      linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(246, 241, 235, 0.96));
+    min-height: 100vh;
+  }
+
+  #root {
+    min-height: 100vh;
+  }
+}
+
+@layer utilities {
+  .animate-fade-in {
+    animation: fade-in 0.35s ease-out;
+  }
+
+  .font-manrope {
+    font-family: "Manrope", "Segoe UI", sans-serif;
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
