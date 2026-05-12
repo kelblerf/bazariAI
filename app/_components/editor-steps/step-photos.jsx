@@ -1,5 +1,6 @@
 "use client";
 
+import Image from 'next/image';
 import { useRef, useState } from 'react';
 import { Loader2, MoveDown, MoveUp, Star, Upload, X } from 'lucide-react';
 
@@ -60,8 +61,8 @@ export default function StepPhotos({ photos, onPhotosChange }) {
       <div>
         <h2 className="font-manrope text-lg font-bold mb-1">Fotografie produktu</h2>
         <p className="text-sm text-muted-foreground">
-          Nahrajte co nejvíce fotek - přední stranu, zadní stranu, detaily, případná poškození, příslušenství a štítek se sériovým číslem.
-          První fotografie bude titulní.
+          Nahrajte co nejv\u00edce fotek - p\u0159edn\u00ed stranu, zadn\u00ed stranu, detaily, p\u0159\u00edpadn\u00e1 po\u0161kozen\u00ed, p\u0159\u00edslu\u0161enstv\u00ed a \u0161t\u00edtek se s\u00e9riov\u00fdm \u010d\u00edslem.
+          Prvn\u00ed fotografie bude tituln\u00ed.
         </p>
       </div>
 
@@ -88,13 +89,13 @@ export default function StepPhotos({ photos, onPhotosChange }) {
         {uploading ? (
           <div className="flex items-center justify-center gap-3">
             <Loader2 className="w-5 h-5 animate-spin text-primary" />
-            <span className="text-sm text-muted-foreground">Nahrávám fotografie...</span>
+            <span className="text-sm text-muted-foreground">Nahr\u00e1v\u00e1m fotografie...</span>
           </div>
         ) : (
           <>
             <Upload className="w-10 h-10 text-muted-foreground mx-auto mb-3" />
-            <p className="text-sm font-medium text-foreground mb-1">Klikněte nebo přetáhněte fotografie</p>
-            <p className="text-xs text-muted-foreground">PNG, JPG, WEBP - více souborů najednou</p>
+            <p className="text-sm font-medium text-foreground mb-1">Klikn\u011bte nebo p\u0159et\u00e1hn\u011bte fotografie</p>
+            <p className="text-xs text-muted-foreground">PNG, JPG, WEBP - v\u00edce soubor\u016f najednou</p>
           </>
         )}
       </div>
@@ -102,12 +103,18 @@ export default function StepPhotos({ photos, onPhotosChange }) {
       {photos.length > 0 && (
         <div className="space-y-3">
           <p className="text-sm font-medium text-muted-foreground">
-            {photos.length} {photos.length === 1 ? 'fotografie' : photos.length < 5 ? 'fotografie' : 'fotografií'} · Přetáhněte nebo použijte šipky pro změnu pořadí
+            {photos.length} {photos.length === 1 ? 'fotografie' : photos.length < 5 ? 'fotografie' : 'fotografi\u00ed'} \u00b7 P\u0159et\u00e1hn\u011bte nebo pou\u017eijte \u0161ipky pro zm\u011bnu po\u0159ad\u00ed
           </p>
           <div className="grid grid-cols-3 gap-3">
             {photos.map((url, idx) => (
               <div key={url + idx} className="relative group rounded-xl overflow-hidden border border-border aspect-square bg-muted">
-                <img src={url} alt={`Foto ${idx + 1}`} className="w-full h-full object-cover" />
+                <Image
+                  src={url}
+                  alt={`Foto ${idx + 1}`}
+                  fill
+                  sizes="(max-width: 768px) 50vw, 33vw"
+                  className="object-cover"
+                />
 
                 <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-2">
                   <button
@@ -140,7 +147,7 @@ export default function StepPhotos({ photos, onPhotosChange }) {
                 >
                   {idx === 0 ? (
                     <span className="flex items-center gap-1">
-                      <Star className="w-3 h-3" /> Titulní
+                      <Star className="w-3 h-3" /> Tituln\u00ed
                     </span>
                   ) : (
                     `#${idx + 1}`
@@ -154,7 +161,7 @@ export default function StepPhotos({ photos, onPhotosChange }) {
 
       {photos.length > 0 && photos.length < 3 && (
         <div className="p-4 rounded-lg bg-warning/10 border border-warning/20 text-sm text-warning">
-          <strong>Tip:</strong> Inzeráty s více fotografiemi mají výrazně vyšší šanci na prodej. Doporučujeme alespoň 4-6 fotek.
+          <strong>Tip:</strong> Inzer\u00e1ty s v\u00edce fotografiemi maj\u00ed v\u00fdrazn\u011b vy\u0161\u0161\u00ed \u0161anci na prodej. Doporu\u010dujeme alespo\u0148 4-6 fotek.
         </div>
       )}
     </div>

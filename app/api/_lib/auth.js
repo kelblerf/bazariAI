@@ -36,7 +36,7 @@ export const requireAuthenticatedUser = async (request) => {
       user: null,
       response: withCorsJson(
         {
-          error: 'Pro tuto akci je nutné přihlášení.',
+          error: 'Pro tuto akci je nutn\u00e9 p\u0159ihl\u00e1\u0161en\u00ed.',
         },
         { status: 401 }
       ),

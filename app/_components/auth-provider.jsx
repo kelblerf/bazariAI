@@ -6,6 +6,17 @@ import { toast } from 'sonner';
 import { getSupabaseBrowser } from '../_lib/supabase-browser';
 
 const AuthContext = createContext(null);
+const fallbackAuthRedirectPath = '/prihlaseni';
+
+const getAuthRedirectUrl = () => {
+  const configuredSiteUrl = process.env.NEXT_PUBLIC_SITE_URL?.trim();
+
+  if (configuredSiteUrl) {
+    return `${configuredSiteUrl.replace(/\/$/, '')}${fallbackAuthRedirectPath}`;
+  }
+
+  return `${window.location.origin}${fallbackAuthRedirectPath}`;
+};
 
 export function AuthProvider({ children }) {
   const [session, setSession] = useState(null);
@@ -48,7 +59,7 @@ export function AuthProvider({ children }) {
         const { error } = await supabase.auth.signInWithOtp({
           email,
           options: {
-            emailRedirectTo: `${window.location.origin}/prihlaseni`,
+            emailRedirectTo: getAuthRedirectUrl(),
           },
         });
 

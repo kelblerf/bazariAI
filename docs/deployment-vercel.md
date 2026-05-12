@@ -26,9 +26,11 @@ Z lokalniho `.env` prepis do Vercelu tyto promenne:
 - `SUPABASE_STORAGE_BUCKET`
 - `NEXT_PUBLIC_SUPABASE_URL`
 - `NEXT_PUBLIC_SUPABASE_ANON_KEY`
+- `NEXT_PUBLIC_SITE_URL`
 - `CORS_ORIGIN`
 
 Pro `CORS_ORIGIN` pouzij produkcni URL aplikace, napriklad `https://bazariai.vercel.app`.
+Pro `NEXT_PUBLIC_SITE_URL` pouzij stejnou stabilni produkcni URL, aby `magic link` prihlaseni nevytvarelo odkazy na docasny deployment.
 
 ## Postup nasazeni
 
